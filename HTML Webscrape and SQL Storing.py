@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
 """
 
-This file is my code solution for the following task. It demonstrates skills in document parsing, creating HTML parser functions, bing API websearches and SQL database storing.
+This file is my code solution for the following task. It demonstrates skills 
+in document parsing, creating HTML parser functions, bing API websearches 
+and SQL database storing.
+
+This was completed Jul 2023, in ~11 hours of time.
+
+I did not have experience with HTML, webscraping, the bing API or SQL before this 
+task. I learned it for the task.
 
 (For reference:
 In the CSV file (“RA_test.csv”) exists a table containing the following information for the
