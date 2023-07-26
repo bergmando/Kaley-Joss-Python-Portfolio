@@ -1,0 +1,37 @@
+---
+title: "RA_Test Questions 2 and 3"
+output: html_document
+date: '2023-07-26'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## RA Test Questions 2 and 3
+
+
+2)	Suppose the URLs in RA_test.csv are for the top private equity firms, and we aim to compile a historical list of top employees at these firms. Describe how you would leverage the hypothetical website output from #4 above and other public online resources to assemble a preliminary database of past employees. This initial pass will likely require further data cleaning and organizing but should provide a solid start toward an annual database of names and job titles. Your answer should focus on programming solutions (no code required) 
+
+I would first create a SQL dataset for each company, named with the company name, through the CSV list names. 
+
+I would create a data_list variable list of lists, and I would append a list called "Form D Filing Information".
+
+I would then use the existing code to populate each SQL database with the company name, filing date, CIK, submission type and link, into the "Form D Filing Information" list.
+
+I would create a function that takes the URL and parses it to pull out the First Name and Last Name of the first relevant employee listed. I would append a list to the data_list variable named FirstName_LastName. I would append teh first name, last name. I would then I would also pull out the "Clarification of Response (if Necessary):" to get the employee's relationship to the firm. (I would test to see if the word "of Issuer" is there, and if so, I would take it out.) I would append that to the employee's list. 
+
+I would make the above function include a loop so it does the same for each relevant employee listed. 
+
+Then I would append each list to the SQL database "Form D Filing Information" using a loop.
+
+3)	Also, explain how you would scale your solution to find LinkedIn profiles for individuals listed under the Related Persons List (relatedPersonsList) on each Form D (no code required)
+
+I would  use the bing API to search linkedin for the query "First Name + Last Name + CompanyName + Clarification of Response" and save it under search_results
+
+I would then create a function to parse the linkedin URL for each relatedPerson. 
+
+Then the linkedin URL would be appended to the relevant employee's FirstName_LastName list, within Data__list.  
+
+Then the updated lists would be appended to the SQL database "Form D Filing Information" using a loop, replacing the existing lists.
+
