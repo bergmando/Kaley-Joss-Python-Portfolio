@@ -60,7 +60,7 @@ def get_html_content(url):
         print(f"An error occurred while fetching HTML content from {url}: {e}")
         return None
 
-
+#Create a function that parses the text content from the HTML link
 def parse_text_content(text_content):
 
     #HTML header
@@ -154,7 +154,7 @@ file_path = "/content/drive/MyDrive/RA_test.csv"
 if os.path.isfile(file_path):
     csv_data = read_csv_file(file_path)
 
-# Create data_list for inserting into the SQL database
+# Create data_list, so that data pulled from the HTML site can be appended to SQL database
 data_list = []
 data_list.append(["CIK"]) 0
 data_list.append(["groupname"]) 1
@@ -165,7 +165,6 @@ data_list.append(["submissiondate"]) 4
 
 #Create a function that uses the links provided to fetch the Form D filing info directly from the EDGAR website, aka 'link' column
 headers = {'User-Agent': 'Mozilla/5.0'}
-
 for x in range(len(csv_data)):
   try:
     response = requests.get(csv_data[x][4], headers=headers) #use the url from each line of the csv file
@@ -211,10 +210,13 @@ for x in range(1,6):
   print("")
   print("")
 
-!pip install pg8000
-import pg8000
+
+#Storing SQL Data
 # I cannot actually use SQL database because I don't have a subscription and its $372/month to make a basic sql database in Microsoft Azure, as I understand
 # I can't find another way to connect to a database/find a database
+
+!pip install pg8000
+import pg8000
 host = 'localhost'
 port = 5432
 database = 'your_database_name'
